@@ -22,7 +22,7 @@ The goal is to recommend movies based on:
 * SQL-based data analysis
 * Streamlit web app for interaction
 
-👉 Live App: **[Add your Streamlit link here]**
+👉 Live App: **[[movierecommendsystemket.streamlit.app]](https://movierecommendsystemket.streamlit.app/)**
 
 ---
 
@@ -202,7 +202,7 @@ This project demonstrates:
 
 ## 🔗 Links
 
-* Notebook: [Add GitHub link here]
-* Streamlit App: [Add deployment link here]
+* Notebook: **[[MovieRecommendations.ipynb]]([https://movierecommendsystemket.streamlit.app/](https://github.com/KetanSharma91/Movie-Recommendation-System/blob/main/MovieRecommendations.ipynb))**
+* Streamlit App: **[[movierecommendsystemket.streamlit.app]](https://movierecommendsystemket.streamlit.app/)**
 
 ---
