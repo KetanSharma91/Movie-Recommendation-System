@@ -202,7 +202,7 @@ This project demonstrates:
 
 ## 🔗 Links
 
-* Notebook: **[[MovieRecommendations.ipynb]]([https://movierecommendsystemket.streamlit.app/](https://github.com/KetanSharma91/Movie-Recommendation-System/blob/main/MovieRecommendations.ipynb))**
+* Notebook: **[[MovieRecommendations.ipynb]](https://github.com/KetanSharma91/Movie-Recommendation-System/blob/main/MovieRecommendations.ipynb)**
 * Streamlit App: **[[movierecommendsystemket.streamlit.app]](https://movierecommendsystemket.streamlit.app/)**
 
 ---
