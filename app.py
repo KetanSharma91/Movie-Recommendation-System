@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+from sklearn.metrics.pairwise import cosine_similarity
 
 @st.cache_data
 def load_model():
@@ -9,7 +10,8 @@ def load_model():
 model_data = load_model()
 
 movies = model_data["movies"]
-cosine_sim = model_data["cosine_sim"]
+tfidf = model_data["tfidf"]
+tfidf_matrix = model_data["tfidf_matrix"]
 indices = model_data["indices"]
 
 def recommend(movie_name):
@@ -17,12 +19,16 @@ def recommend(movie_name):
         return ["Movie not found"]
     
     idx = indices[movie_name]
-    sim_scores = list(enumerate(cosine_sim[idx]))
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)[1:6]
     
-    movie_indices = [i[0] for i in sim_scores]
+    # compute similarity on demand
+    sim_scores = cosine_similarity(
+        tfidf_matrix[idx], tfidf_matrix
+    ).flatten()
     
-    return movies.iloc[movie_indices][['title', 'genres']]
+    # get top 5 similar movies
+    similar_indices = sim_scores.argsort()[::-1][1:6]
+    
+    return movies.iloc[similar_indices][['title', 'genres']]
 
 st.title("🎬 Movie Recommender")
 
@@ -31,5 +37,8 @@ movie_name = st.text_input("Enter movie name:")
 if st.button("Recommend"):
     results = recommend(movie_name)
     
-    for i, row in enumerate(results.values, 1):
-        st.write(f"{i}. {row[0]} → {row[1]}")
+    if isinstance(results, list):
+        st.write(results[0])
+    else:
+        for i, row in enumerate(results.values, 1):
+            st.write(f"{i}. {row[0]} → {row[1]}")
